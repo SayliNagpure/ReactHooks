@@ -1,9 +1,10 @@
+import UseCallBackHooks from "./UseCallBackHook/UseCallBackHooks";
 import UseMemoHooks from "./UseMemoHook/UseMemoHooks";
 function App() {
   return (
     <div>
-      <UseMemoHooks />
-      {/* <h1>nsiuxnws</h1> */}
+      {/* <UseMemoHooks /> */}
+      <UseCallBackHooks/>
     </div>
   );
 }
