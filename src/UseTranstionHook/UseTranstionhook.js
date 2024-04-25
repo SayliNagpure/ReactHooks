@@ -50,3 +50,44 @@
 
 
 // export default UseTranstionhook
+
+import React, { useState, useTransition } from 'react'
+
+const UseTranstionhook = () => {
+        const [input, setInput] = useState("");
+        const [isPending, startTransition] = useTransition();
+        const [list, setList] = useState([]);
+       
+        const LIST_SIZE = 20000;
+       
+        const handleChange = (e) => {
+          setInput(e.target.value); // high priority
+          startTransition(() => {
+            const arr = [];
+            for (let i = 0; i < LIST_SIZE; i++) {
+              arr.push(e.target.value);
+            }
+            setList(arr);
+          });
+        };
+       
+        return (
+          <>
+            <input type="text" value={input} onChange={handleChange}></input>
+            {isPending
+              ? "Loading...."
+              : list.map((item, index) => {
+                  return <div key={index}>{item}</div>;
+                })}
+          </>
+        );
+      };
+
+
+
+//   return (
+//     <div>UseTranstionhook</div>
+//   )
+
+
+export default UseTranstionhook
